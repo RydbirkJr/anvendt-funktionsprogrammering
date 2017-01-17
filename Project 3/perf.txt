@@ -1,0 +1,9 @@
+1 elem = 1 QuickSortV1 parse tree
+
+Concat 10 elem:                Real: 00:00:00.001, CPU: 00:00:00.015, GC gen0: 0, gen1: 0, gen2: 0
+Naive string append 10 elem:   Real: 00:00:01.629, CPU: 00:00:02.281, GC gen0: 44, gen1: 30, gen2: 25
+StringBuilder 10 elem:         Real: 00:00:00.001, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
+ 
+Concat 100 elem:               Real: 00:00:00.007, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
+Naive string append 100 elem:  Real: 00:02:57.580, CPU: 00:04:18.781, GC gen0: 2242, gen1: 2225, gen2: 2224
+StringBuilder 100 elem:        Real: 00:00:00.012, CPU: 00:00:00.015, GC gen0: 1, gen1: 1, gen2: 0

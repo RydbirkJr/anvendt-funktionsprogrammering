@@ -1,0 +1,6 @@
+﻿begin
+  res : int,
+  a : int[3];
+  a[0] := 2;
+  print 3
+end

@@ -1,0 +1,7 @@
+﻿begin
+res : int,
+procedure p(x: int) = { print x };
+res := 4;
+p(res);
+print res
+end

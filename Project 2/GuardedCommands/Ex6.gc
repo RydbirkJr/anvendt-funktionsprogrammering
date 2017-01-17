@@ -1,0 +1,11 @@
+﻿
+
+begin 
+   x: int; 
+   x:= 1; 
+   if x=3 -> print x
+    | x=2 -> print 10 
+	| false -> print 80085
+   fi;
+   print x
+end

@@ -1,0 +1,118 @@
+\title{
+		02257 Applied Functional Programming\\
+	----- Project 2 -----
+	}
+\author{
+Casper Sloth Paulsen (s110448)\hspace{1cm}\includegraphics[scale=.2]{csp.png}\\
+Stefan Mertens (s113420)\hspace{1cm}\includegraphics[scale=.1]{stm.png}\\
+Anders Rydbirk (s113725)\hspace{1cm}\includegraphics[scale=.35]{ar.png}
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc} % the font encoding
+\usepackage[utf8]{inputenc} % the input encoding
+\usepackage{lmodern} % the Latin Modern font
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{turqusnumbers}{rgb}{0.17,0.57,0.69}
+\definecolor{redstrings}{rgb}{0.5,0,0}
+\definecolor{dkgreen}{rgb}{0.0,0.35,0}
+\definecolor{dred}{rgb}{0.545,0,0}
+\definecolor{dblue}{rgb}{0,0,0.545}
+\definecolor{lgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+
+\lstdefinelanguage{FSharp}{
+      backgroundcolor=\color{black!5},  
+      basicstyle=\small \ttfamily \color{black} \bfseries,   
+      breakatwhitespace=false,       
+      breaklines=true,               
+      captionpos=b,                   
+      commentstyle=\color{dkgreen},   
+      deletekeywords={...}, 
+      escapeinside={\%*}{*)},                  
+      frame=single,                  
+      language=TeX, 
+      morekeywords={let, new, match, with, rec, open, module, namespace, type, of, member, 			and, for, in, do, begin, end, fun, function, try, mutable, if, then, else},
+    keywordstyle=\color{bluekeywords},
+    sensitive=false,
+    morecomment=[l][\color{greencomments}]{///},
+    morecomment=[l][\color{greencomments}]{//},
+    morecomment=[s][\color{greencomments}]{{(*}{*)}},
+    morestring=[b]",
+    stringstyle=\color{redstrings},			%Insert missing keywords here
+      emphstyle=\color{cyan},               
+      keywordstyle=\color{blue}, 
+      identifierstyle=\color{redstrings},
+      stringstyle=\color{blue},      
+      numbers=none,                 
+      numbersep=5pt,                   
+      rulecolor=\color{black},        
+      showspaces=false,               
+      showstringspaces=false,        
+      showtabs=false,                
+      stepnumber=1,                   
+      tabsize=4,
+      columns=fullflexible,                
+      title=\lstname
+}
+\geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=25mm,
+ right=25mm,
+ top=5mm,
+ bottom=20mm,
+ }
+
+\begin{document}
+\clearpage\maketitle
+\thispagestyle{empty}
+
+%\begin{center}
+%----- End of assignment -----
+%\end{center}
+
+\section{Status}
+The status of project is as follows. The following programs work:
+\begin{enumerate}
+\item A0.gc, A1.gc, A2.gc, A3.gc, A4.gc 
+\item Ex0.gc, Ex1.gc, Ex2.gc, Ex3.gc, Ex4.gc, Ex5.gc, Ex6.gc, Ex7.gc
+\item fact.gc, factCBV.gc, factImpPTyp.gc, factRec.gc
+\item par1.gc
+\item QuickSortV1.gc, QuickSortV2.gc
+\item Skip.gc, Swap.gc
+\end{enumerate}
+This covers almost all of the programs in the assignment. The following programs does not work:
+\begin{enumerate}
+\item par2.gc
+\end{enumerate}
+The reason that par2.gc does not work is that it has a global block declaration with local variables, which makes the current implementation of the code generator unable to generate code. This is intended, because local block assume that they are in a local environment. Blocks do not create their own local environment, since multiple local environments on top of each other are not supported in our solution.
+
+This means that the solution covers all basic language features such as functions, local declarations, arrays, procedures, and pointers. 
+
+\section{Highlights}
+The following extra programs wer developed to either test extra functionality and/or make more interesting test cases. 
+\begin{enumerate}
+\item Pointer.gc
+\item InsertionSort.gc
+\end{enumerate}
+InsertionSort.gc and queens.gc where made to make some more interesting test cases that operated on the entire language. Pointer.gc was made to test the pointer functionality of the program and to show that the implementation supports pointer-to-pointer and address-of-variables etc. Pointer-to-arrays is not supported.
+
+The implementation also includes a minor optimization step after the code generation that simply iterates the generated code and aggregates all \texttt{INCSP} instructions, so cases like \texttt{[INCSP 1;INCSP 1]} etc. is concatted and replaced by e.g. \texttt{[INCSP 2]}. 
+
+One other highlight in terms of the code generator is the reuse of the \texttt{bindLocal} function, which may be used to assign variables and arrays to a local environment. This function is both used to create local function parameters and local variables inside blocks.
+
+\section{Reflection}
+This project has presented interesting challenges in an unfamilliar problem domain. Functional languages find great application in the given domain and this project has shown the many applications of the F\# language. The functional approach to code generation and type checking has proved very fitting and intuitive in general.\\
+
+In this project our main focus has been on the basic functionalities such as functions, pointers and arrays. Thus, we have invested much time in verifying these features rather than looking into the additional features like optimizing the code generation.
+\end{document}

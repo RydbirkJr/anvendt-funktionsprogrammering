@@ -1,0 +1,13 @@
+﻿begin
+  c : int,
+  x : ^int,
+  y : ^^int,
+  z : ^^^int;
+  c := 24;
+  x := &c;
+  y := &x;
+  print y^^;
+  
+  z^^^ := 0;
+  print z^^^
+end

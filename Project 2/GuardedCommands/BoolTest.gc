@@ -1,0 +1,8 @@
+﻿begin 
+x:int, y:int, z:int;
+x := 2;
+y := 2;
+z := 4;
+print y >= z;
+print x
+end
